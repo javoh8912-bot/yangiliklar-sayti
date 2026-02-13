@@ -1,0 +1,198 @@
+{% extends 'base.html' %}
+{% block content %}
+    <section id="newsSection">
+      <div class="row">
+        <div class="col-lg-12 col-md-12">
+          <div class="latest_newsarea"> <span>Keyingi xabarlar</span>
+            <ul id="ticker01" class="news_sticker">
+              {% for newd in news %}
+              <li><a href="#"><img src="{{newd.image.url}}" alt="">{{newd.title}}</a></li>
+              {% endfor %}
+            </ul>
+            <div class="social_area">
+              <ul class="social_nav">
+                <li class="facebook"><a href="#"></a></li>
+                <li class="twitter"><a href="#"></a></li>
+                <li class="flickr"><a href="#"></a></li>
+                <li class="pinterest"><a href="#"></a></li>
+                <li class="googleplus"><a href="#"></a></li>
+                <li class="vimeo"><a href="#"></a></li>
+                <li class="youtube"><a href="#"></a></li>
+                <li class="mail"><a href="#"></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="contentSection">
+      <div class="row">
+        <div class="col-lg-8 col-md-8 col-sm-8">
+          <div class="left_content">
+            <div class="single_page">
+              <ol class="breadcrumb">
+                <li><a href="{% url 'info' %}">Uy</a></li>
+                <li><a href="#">Technology</a></li>
+                <li class="active">Mobile</li>
+              </ol>
+              <h1>{{new.title}}</h1>
+              <div class="post_commentbox"> <a href="#"><i class="fa fa-user"></i>Wpfreeware</a> <span><i
+                    class="fa fa-calendar"></i>6:49 AM</span> <a href="#"><i class="fa fa-tags"></i>Technology</a>
+              </div>
+              <div class="single_page_content"> <img class="img-center" src="{{new.image.url}}" alt="">
+                <p>{{new.body}}</p>
+                <blockquote>Saytimizda siz siyosat, texnologiya, sport, iqtisodiyot va madaniyatga oid ko‘plab qiziqarli
+                  hamda ishonchli yangiliklar muntazam ravishda e’lon qilib boriladi. Bizning maqsadimiz — o‘quvchilarni
+                  tezkor, aniq va haqqoniy axborot bilan ta’minlash. Yangiliklarni kuzatishda davom eting va biz bilan
+                  birga bo‘ling. </blockquote>
+                <ul>
+                  <li>Bu xabarda siz uchun kutilmagan faktlar va eng dolzarb ma’lumotlar jamlangan.</li>
+                </ul>
+                <button class="btn default-btn">Standart</button>
+                <button class="btn btn-red">Qizil tugma</button>
+                <button class="btn btn-yellow">Sariq tugma</button>
+                <button class="btn btn-green">Yashil tugma</button>
+                <button class="btn btn-black">Qora tugma</button>
+                <button class="btn btn-orange">To'q sariq tugma</button>
+                <button class="btn btn-blue">Ko'k tugma</button>
+                <button class="btn btn-lime">Lime tugma</button>
+                <button class="btn btn-theme">Mavzu tugmasi</button>
+              </div>
+              <div class="social_link">
+                <ul class="sociallink_nav">
+                  <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                  <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                  <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                  <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                  <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                </ul>
+              </div>
+              <div class="related_post">
+                <h2>Yaxshi yangiliklar <i class="fa fa-thumbs-o-up"></i></h2>
+                <ul class="spost_nav wow fadeInDown animated">
+                  {% for new in news %}
+                  <li>
+                    <div class="media"> <a class="media-left" href="single_page.html"> <img src="{{new.image.url}}"
+                          alt=""> </a>
+                      <div class="media-body"> <a class="catg_title" href="single_page.html"> {{new.title}}</a> </div>
+                    </div>
+                  </li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <nav class="nav-slit"> <a class="prev" href="#"> <span class="icon-wrap"><i class="fa fa-angle-left"></i></span>
+            <div>
+              <h3>City Lights</h3>
+              <img src="../images/post_img1.jpg" alt="" />
+            </div>
+          </a> <a class="next" href="#"> <span class="icon-wrap"><i class="fa fa-angle-right"></i></span>
+            <div>
+              <h3>Street Hills</h3>
+              <img src="../images/post_img1.jpg" alt="" />
+            </div>
+          </a> </nav>
+        <div class="col-lg-4 col-md-4 col-sm-4">
+          <aside class="right_content">
+            <div class="single_sidebar">
+              <h2><span>Qiziqarli xabarlar</span></h2>
+              <ul class="spost_nav">
+                {% for new in last_news %}
+                <li>
+                  <div class="media"> <a href="{{ new.get_absolute_url }}" class="media-left"> <img alt=""
+                        src="{{new.image.url}}"> </a>
+                    <div class="media-body"> <a href="{% url 'one_new' new.id %}" class="catg_title">
+                        {{new.title|truncatewords:3}}</a> </div>
+                  </div>
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+            <div class="single_sidebar">
+              <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#category" aria-controls="home" role="tab"
+                    data-toggle="tab">Category</a></li>
+                <li role="presentation"><a href="#video" aria-controls="profile" role="tab" data-toggle="tab">Video</a>
+                </li>
+                <li role="presentation"><a href="#comments" aria-controls="messages" role="tab"
+                    data-toggle="tab">Komentlar</a></li>
+              </ul>
+              <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="category">
+                  <ul>
+                    {% for categ in categories %}
+                    <li class="cat-item"><a href="#">{{categ.name}}</a></li>
+                    {% endfor %}
+                  </ul>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="video">
+                  <div class="vide_area">
+                    <iframe width="100%" height="250"
+                      src="http://www.youtube.com/embed/h5QWbURNEpA?feature=player_detailpage" frameborder="0"
+                      allowfullscreen></iframe>
+                  </div>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="comments">
+                  <ul class="spost_nav">
+                    <li>
+                      <div class="media wow fadeInDown"> <a href="single_page.html" class="media-left"> <img alt=""
+                            src="{% static 'images/post_img1.jpg' %}"> </a>
+                        <div class="media-body"> <a href="single_page.html" class="catg_title"> Aliquam malesuada diam
+                            eget turpis varius 1</a> </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="media wow fadeInDown"> <a href="single_page.html" class="media-left"> <img alt=""
+                            src="{% static 'images/post_img2.jpg' %}"> </a>
+                        <div class="media-body"> <a href="single_page.html" class="catg_title"> Aliquam malesuada diam
+                            eget turpis varius 2</a> </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="media wow fadeInDown"> <a href="single_page.html" class="media-left"> <img alt=""
+                            src="{% static 'images/post_img1.jpg' %}"> </a>
+                        <div class="media-body"> <a href="single_page.html" class="catg_title"> Aliquam malesuada diam
+                            eget turpis varius 3</a> </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="media wow fadeInDown"> <a href="single_page.html" class="media-left"> <img alt=""
+                            src="{% static 'images/post_img2.jpg' %}"> </a>
+                        <div class="media-body"> <a href="single_page.html" class="catg_title"> Aliquam malesuada diam
+                            eget turpis varius 4</a> </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="single_sidebar wow fadeInDown">
+              <h2><span>Homiy</span></h2>
+              <a class="sideAdd" href="#"><img src="{% static 'images/add_img.jpg' %}" alt=""></a>
+            </div>
+            <div class="single_sidebar wow fadeInDown">
+              <h2><span>Kategoriya arxivi</span></h2>
+              <select class="catgArchive">
+                <option>Kategoriyani tanlang</option>
+                <option>Turmush tarzi</option>
+                <option>Sport</option>
+                <option>Texnologiya</option>
+                <option>Tishlar</option>
+              </select>
+            </div>
+            <div class="single_sidebar wow fadeInDown">
+              <h2><span>Havolalar</span></h2>
+              <ul>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Rss Tasmasi</a></li>
+                <li><a href="#">Tizimga Kirish</a></li>
+                <li><a href="#">Hayot &amp; Uslub</a></li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+   {% endblock %}
